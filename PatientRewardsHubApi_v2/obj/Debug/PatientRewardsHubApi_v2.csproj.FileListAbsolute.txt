@@ -1,0 +1,6 @@
+D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PatientRewardsHubApi_v2\bin\Debug\PatientRewardsHubApi_v2.dll
+D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PatientRewardsHubApi_v2\bin\Debug\PatientRewardsHubApi_v2.pdb
+D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PatientRewardsHubApi_v2\bin\Debug\Newtonsoft.Json.dll
+D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PatientRewardsHubApi_v2\bin\Debug\Newtonsoft.Json.xml
+D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PatientRewardsHubApi_v2\obj\Debug\PatientRewardsHubApi_v2.dll
+D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PatientRewardsHubApi_v2\obj\Debug\PatientRewardsHubApi_v2.pdb
