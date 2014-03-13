@@ -7,3 +7,12 @@ D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\b
 D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.csprojResolveAssemblyReference.cache
 D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.dll
 D:\PracticeGenius\Syntility\Syntility\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.pdb
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\bin\Debug\PRH_Api_v2_Tests.dll
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\bin\Debug\PRH_Api_v2_Tests.pdb
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\bin\Debug\PatientRewardsHubApi_v2.dll
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\bin\Debug\Newtonsoft.Json.dll
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\bin\Debug\PatientRewardsHubApi_v2.pdb
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\bin\Debug\Newtonsoft.Json.xml
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.csprojResolveAssemblyReference.cache
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.dll
+D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.pdb

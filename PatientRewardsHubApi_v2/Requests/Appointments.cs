@@ -52,8 +52,11 @@ namespace PatientRewardsHubApi_v2.Requests
 
         public IndividualAppointmentResponse UpdateAppointment(Appointment appointment)
         {
-            var body = new { appointment };
-            return GenericPut<IndividualAppointmentResponse>(string.Format("appointments/{0}.json", appointment.Id), body);
+            var body = appointment ;
+            IndividualAppointmentResponse individualAppointmentResponse = new IndividualAppointmentResponse();
+            Appointment retAppointment = GenericPut<Appointment>(string.Format("appointment/{0}", appointment.Id), body);
+            individualAppointmentResponse.Appointment = appointment;
+            return individualAppointmentResponse;
         }
 
         public bool DeleteAppointment(long id)

@@ -52,6 +52,10 @@ namespace PatientRewardsHubApi_v2
         public T RunRequest<T>(string resource, string requestMethod, object body = null)
         {
             var response = RunRequest(resource, requestMethod, body);
+            if (response.HttpStatusCode != HttpStatusCode.OK)
+            {
+                throw new ApplicationException("OK not received from server on method 'RunRequest'");
+            }
             var obj = JsonConvert.DeserializeObject<T>(response.Content, new JsonSerializerSettings()
                 {
                     NullValueHandling = NullValueHandling.Ignore
@@ -89,6 +93,12 @@ namespace PatientRewardsHubApi_v2
                 req.PreAuthenticate = true;
 
                 req.Method = requestMethod; //GET POST PUT DELETE
+
+                if(requestMethod.ToLower().Contains("put"))
+                {
+                    req.Headers.Add("X-HTTP-Method-Override", "PUT");             
+                }
+
                 req.Accept = "application/json, application/xml, text/json, text/x-json, text/javascript, text/xml";
                 req.ContentLength = 0;
 

@@ -56,8 +56,16 @@ namespace PatientRewardsHubApi_v2.Requests
 
         public IndividualPatientResponse UpdatePatient(Patient patient)
         {
-            var body = new { patient };
-            return GenericPut<IndividualPatientResponse>(string.Format("patients/{0}.json", patient.Id), body);
+            var body = patient ;
+            IndividualPatientResponse individualPatientResponse = new IndividualPatientResponse();
+            Patient retPatient =  GenericPut<Patient>(string.Format("patient/{0}", patient.Id), body);
+
+            individualPatientResponse.Patient = patient;
+            
+            return individualPatientResponse;
+
+
+            //return GenericPut<Patient>(string.Format("patient/{0}", patient.Id), body);
         }
 
         public bool DeletePatient(long id)
