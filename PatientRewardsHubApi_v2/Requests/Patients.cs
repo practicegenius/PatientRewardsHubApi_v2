@@ -70,7 +70,7 @@ namespace PatientRewardsHubApi_v2.Requests
 
         public bool DeletePatient(long id)
         {
-            return GenericDelete(string.Format("patients/{0}.json", id));
+            return GenericDelete(string.Format("patient/{0}", id));
         }
 
 #endif

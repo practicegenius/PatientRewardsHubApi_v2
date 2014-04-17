@@ -12,15 +12,23 @@ namespace PRH_Api_v2_Tests
         private Random random = new Random();
 
         [TestMethod]
-        public void Test_GetPatient()
+        public void Test_GetPatient_4()
         {
             
             var res = api.Patients.GetPatientById(4);
             Assert.IsTrue(res.Patient.Firstname == "Mickey");
             Assert.IsTrue(res.Patient.Lastname == "Mouse");
-            
-            
-            //Assert.AreEqual(4, res.Patient.Id);
+       
+            Assert.AreEqual(4, res.Patient.Id);
+        }
+
+        [TestMethod]
+        public void Test_GetPatient_8()
+        {
+
+            var res = api.Patients.GetPatientById(8);
+            Assert.IsTrue(res.Patient.Firstname == "Lady");
+            Assert.IsTrue(res.Patient.Lastname == "Gaga");
         }
 
         [TestMethod]
@@ -55,6 +63,47 @@ namespace PRH_Api_v2_Tests
         }
 
         [TestMethod]
+        public void Test_Create_Patient_1()
+        {
+
+            var res = api.Patients.CreatePatient(new Patient()
+            {
+                External_id = "23" + random.Next(0, 10000).ToString(),
+                Firstname = "Bill",
+                Lastname = "House",
+                Email = "Bill@patientRewardsHub.com",
+                Address1 = "343 Left St",
+                City = "Webster City",
+                State = "IA",
+                Zip = "50595",
+                Homephone = "5158359338",
+                Birthdate = string.Format("1980-{0:D2}-{1:D2}", random.Next(1, 12), random.Next(1, 30))
+            });
+        }
+
+       [TestMethod]
+        public void Test_Create_Patient_2()
+        {
+            
+            var res = api.Patients.CreatePatient(new Patient()
+                                                                {
+                                                                    External_id = "23" + random.Next(0,10000).ToString(),
+                                                                    Firstname = "Harry",
+                                                                    Lastname = "Face",
+                                                                    Email = "Harry@patientRewardsHub.com",
+                                                                    Address1 = "3782 Gravel Rd",
+                                                                    City = "Harryvill",
+                                                                    State = "TL",
+                                                                    Zip = "451886",
+                                                                    Homephone = "88846515151",
+                                                                    Birthdate = string.Format("1980-{0:D2}-{1:D2}", random.Next(1,12),  random.Next(1,30))
+                                                                });
+
+            Assert.IsTrue(Convert.ToInt32(res.Patient.Id) > 0);
+     }
+
+
+        [TestMethod]
         public void Test_Update_Patient()
         {
             var res = api.Patients.UpdatePatient(new Patient()
@@ -73,6 +122,23 @@ namespace PRH_Api_v2_Tests
             });
             Assert.IsTrue(res.Patient.Firstname == "Minny");
         }
+
+        [TestMethod]
+        public void Test_Delete_Patient()
+        {
+            int id = 32;
+            IndividualPatientResponse patientResponse = api.Patients.GetPatientById(id);
+            Assert.IsTrue(patientResponse.Patient != null);
+            Assert.IsTrue(patientResponse.Patient.Id > 0);
+
+            var isDeleted = api.Patients.DeletePatient(id);
+            Assert.IsTrue(isDeleted);
+
+            IndividualPatientResponse patientResponse1 = api.Patients.GetPatientById(id);
+            Assert.IsTrue(patientResponse1.Patient == null);
+
+        }
+
        
     }
 }

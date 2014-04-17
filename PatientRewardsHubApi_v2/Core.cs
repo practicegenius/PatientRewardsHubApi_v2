@@ -145,7 +145,7 @@ namespace PatientRewardsHubApi_v2
         
         protected bool GenericDelete(string resource)
         {
-            var res = RunRequest(resource, "DELETE");
+            var res = RunRequest(resource, "DEL");
             return res.HttpStatusCode == HttpStatusCode.OK;            
         }
         
