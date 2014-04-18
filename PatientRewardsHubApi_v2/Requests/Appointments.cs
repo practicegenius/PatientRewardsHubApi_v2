@@ -61,7 +61,7 @@ namespace PatientRewardsHubApi_v2.Requests
 
         public bool DeleteAppointment(long id)
         {
-            return GenericDelete(string.Format("appointments/{0}.json", id));
+            return GenericDelete(string.Format("appointment/{0}", id));
         }
 
 

@@ -126,19 +126,43 @@ namespace PRH_Api_v2_Tests
         [TestMethod]
         public void Test_Delete_Patient()
         {
-            int id = 32;
-            IndividualPatientResponse patientResponse = api.Patients.GetPatientById(id);
-            Assert.IsTrue(patientResponse.Patient != null);
-            Assert.IsTrue(patientResponse.Patient.Id > 0);
+            var res = api.Patients.CreatePatient(new Patient()
+            {
+                External_id = "23" + random.Next(0, 10000).ToString(),
+                Firstname = "Harry",
+                Lastname = "Face",
+                Email = "Harry@patientRewardsHub.com",
+                Address1 = "3782 Gravel Rd",
+                City = "Harryvill",
+                State = "TL",
+                Zip = "451886",
+                Homephone = "88846515151",
+                Birthdate = string.Format("1980-{0:D2}-{1:D2}", random.Next(1, 12), random.Next(1, 30))
+            });
+
+            int id = res.Patient.Id;
+            //IndividualPatientResponse patientResponse = api.Patients.GetPatientById(id);
+            //Assert.IsTrue(patientResponse.Patient != null);
+            Assert.IsTrue(id > 0);
 
             var isDeleted = api.Patients.DeletePatient(id);
             Assert.IsTrue(isDeleted);
 
-            IndividualPatientResponse patientResponse1 = api.Patients.GetPatientById(id);
-            Assert.IsTrue(patientResponse1.Patient == null);
+            //IndividualPatientResponse patientResponse1 = api.Patients.GetPatientById(id);
+            //Assert.IsTrue(patientResponse1.Patient == null);
+
+            try
+            {
+                IndividualPatientResponse patientResponse1 = api.Patients.GetPatientById(id);
+                Assert.IsTrue(patientResponse1.Patient == null);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("404"));
+            }
 
         }
 
-       
+
     }
 }

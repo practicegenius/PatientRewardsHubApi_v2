@@ -16,3 +16,12 @@ D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\bin\Debug\Newtonsoft.
 D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.csprojResolveAssemblyReference.cache
 D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.dll
 D:\PracticeGenius\PatientRewardsHubApi_v2\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.pdb
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Debug\PRH_Api_v2_Tests.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Debug\PRH_Api_v2_Tests.pdb
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Debug\PatientRewardsHubApi_v2.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Debug\Newtonsoft.Json.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Debug\PatientRewardsHubApi_v2.pdb
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Debug\Newtonsoft.Json.xml
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.csprojResolveAssemblyReference.cache
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\obj\Debug\PRH_Api_v2_Tests.pdb
