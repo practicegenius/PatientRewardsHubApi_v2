@@ -12,6 +12,9 @@ namespace ZendeskApi_v2.Models.Appointments
 
     public class GroupAppointmentResponse : GroupResponseBase
     {
+        [JsonProperty("count")]
+        public int? Count { get; set; }
+
         [JsonProperty("appointments")]
         public IList<Appointment> Appointments { get; set; }
     }

@@ -118,7 +118,7 @@ namespace PatientRewardsHubApi_v2
                 }
                 var res = req.GetResponse();
                 HttpWebResponse response = res as HttpWebResponse;
-                var responseStream = response.GetResponseStream();
+                var responseStream = response.GetResponseStream(); 
                 var reader = new StreamReader(responseStream);
                 string responseFromServer = reader.ReadToEnd();
 
@@ -128,9 +128,8 @@ namespace PatientRewardsHubApi_v2
                     HttpStatusCode = response.StatusCode
                 };
             }
-            catch (WebException ex)
-            {
-                
+            catch (WebException ex) 
+            {               
                 var responseStream = ex.Response.GetResponseStream();
                 var reader = new StreamReader(responseStream);
                 string responseFromServer = reader.ReadToEnd();
@@ -174,7 +173,7 @@ namespace PatientRewardsHubApi_v2
         }
 #endif
         protected string GetPasswordOrTokenAuthHeader()
-        {
+        { 
             if (!String.IsNullOrEmpty(ApiToken) && ApiToken.Trim().Length >= 0)
                 return GetAuthHeader(User + "/token", ApiToken);
             

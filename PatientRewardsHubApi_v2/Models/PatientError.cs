@@ -1,21 +1,16 @@
-﻿// JSON C# Class Generator
-// http://at-my-window.blogspot.com/?page=json-class-generator
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace PatientRewardsHubApi_v2.Models.Patients
+namespace PatientRewardsHubApi_v2.Models
 {
-
-    public class Patient
+    public class PatientError
     {
-        /// <summary>
-        /// The PRH Patient ID
-        /// </summary>
         [JsonProperty("id")]
-        public Int32 Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// The Integrator's Patient ID
@@ -26,7 +21,7 @@ namespace PatientRewardsHubApi_v2.Models.Patients
         [JsonProperty("firstname")]
         public string Firstname { get; set; }
 
-        [JsonProperty("middlename")] 
+        [JsonProperty("middlename")]
         public string Middlename { get; set; }
 
         [JsonProperty("lastname")]

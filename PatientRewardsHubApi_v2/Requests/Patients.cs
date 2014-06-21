@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using PatientRewardsHubApi_v2.Models.Patients;
 using PatientRewardsHubApi_v2.Models.Appointments;
 using ZendeskApi_v2.Models.Patients;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace PatientRewardsHubApi_v2.Requests
@@ -20,23 +22,20 @@ namespace PatientRewardsHubApi_v2.Requests
         {
         }
 #if SYNC
-        public GroupPatientResponse GetPatients()
+        public GroupPatientResponse GetPatients(int limit, int offset)
         {
-            return GenericGet<GroupPatientResponse>("patients.json");
+            GroupPatientResponse groupPatientResponse = GenericGet<GroupPatientResponse>(string.Format("patient?limit={0}&offset={1}", limit, offset));  // ??
+            return groupPatientResponse;
         }
 
         public IndividualPatientResponse GetPatientById(long patientId)
         {
-            //return GenericGet<IndividualPatientResponse>(string.Format("patients/{0}.json", patientId));
-            //return GenericGet<IndividualPatientResponse>(string.Format("patient/{0}", patientId));
-
             IndividualPatientResponse individualPatientResponse = new IndividualPatientResponse();           
-            Patient patient = GenericGet<Patient>(string.Format("patient/{0}", patientId));
+            Patient patient = GenericGet<Patient>(string.Format("patient/{0}", patientId)); // GenericGet<Patient>("patient/121");
             individualPatientResponse.Patient = patient;
             individualPatientResponse.Patient.Id = (int)patientId;
             return individualPatientResponse;            
         }
-
 
         public IndividualPatientResponse CreatePatient(Patient patient)
         {
@@ -50,13 +49,11 @@ namespace PatientRewardsHubApi_v2.Requests
             }
             
             return individualPatientResponse;
-
-            //return GenericPost<IndividualPatientResponse>("patient", body);
         }
 
         public IndividualPatientResponse UpdatePatient(Patient patient)
         {
-            var body = patient ;
+            var body = patient;
             IndividualPatientResponse individualPatientResponse = new IndividualPatientResponse();
             Patient retPatient =  GenericPut<Patient>(string.Format("patient/{0}", patient.Id), body);
 
@@ -64,13 +61,40 @@ namespace PatientRewardsHubApi_v2.Requests
             
             return individualPatientResponse;
 
-
-            //return GenericPut<Patient>(string.Format("patient/{0}", patient.Id), body);
         }
 
         public bool DeletePatient(long id)
         {
             return GenericDelete(string.Format("patient/{0}", id));
+        }
+
+        public GroupPatientResponse CreatePatients(Patient[] patients)
+        {
+            var body = patients; // new { patient };
+            GroupPatientResponse groupPatientResponse = new GroupPatientResponse();
+            var retpatients = GenericPost<GroupPatientResponse>("patient/batch", body);
+
+            //mws:  retPatients will be a "GroupPatientResponse" have "Patients" and "Errors"
+
+            //mws:  merge "Patient[] patients" with "retpatients"
+
+            foreach (Patient patient in patients)
+            {
+                // org
+                var newPatientId = (from p in retpatients.Patients
+                                    where p.External_id == patient.External_id
+                                    select p.Id).FirstOrDefault();
+                // This is Org.
+                if (newPatientId > 0)
+                {
+                    patient.Id = newPatientId;
+                }
+            }
+
+            groupPatientResponse.Patients = patients.ToList();
+            groupPatientResponse.Errors = retpatients.Errors;
+
+            return groupPatientResponse;
         }
 
 #endif

@@ -19,9 +19,19 @@ namespace PatientRewardsHubApi_v2.Requests
         {
         }
 #if SYNC
-        public GroupAppointmentResponse GetAppointments()
+        //// already here... did i create this??
+        //public GroupAppointmentResponse GetAppointments()
+        //{
+        //    GroupAppointmentResponse groupAppointmentResponse = new GroupAppointmentResponse();
+        //    Appointments appointments = GenericGet<Appointments>("appointment");
+
+        //    return GenericGet<GroupAppointmentResponse>("appointments.json");
+        //}
+
+        public GroupAppointmentResponse GetAppointments(int limit, int offset)
         {
-            return GenericGet<GroupAppointmentResponse>("appointments.json");
+            GroupAppointmentResponse groupAppointmentResponse = GenericGet<GroupAppointmentResponse>(string.Format("appointment?limit={0}&offset={1}", limit, offset));
+            return groupAppointmentResponse;
         }
 
         public IndividualAppointmentResponse GetAppointmentById(long appointmentId)
@@ -32,6 +42,17 @@ namespace PatientRewardsHubApi_v2.Requests
             Appointment appointment = GenericGet<Appointment>(string.Format("appointment/{0}", appointmentId));
             individualAppointmentResponse.Appointment = appointment;
             return individualAppointmentResponse;  
+        }
+
+        public GroupAppointmentResponse GetAppointmentByExternalId(string externalId)
+        {
+            //return GenericGet<IndividualAppointmentResponse>(string.Format("appointments/{0}.json", appointmentId));
+
+            //IndividualAppointmentResponse individualAppointmentResponse = new IndividualAppointmentResponse();
+            GroupAppointmentResponse appointment = GenericGet<GroupAppointmentResponse>(string.Format("appointment?external_id={0}&limit=1&offset=0", externalId));
+            //individualAppointmentResponse.Appointment = appointment;
+            //return individualAppointmentResponse;
+            return appointment;
         }
 
 

@@ -11,6 +11,7 @@
     <AssemblyName>PatientRewardsHubApi_v2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,14 +21,16 @@
     <DefineConstants>TRACE;DEBUG;SYNC</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;SYNC</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -47,10 +50,12 @@
     <Compile Include="GroupResponseBase.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Models\Appointments\Appointment.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\GroupAppointmentResponse.cs" />
     <Compile Include="Models\GroupPatientResponse.cs" />
     <Compile Include="Models\IndividualAppointmentResponse.cs" />
     <Compile Include="Models\IndividualPatientResponse.cs" />
+    <Compile Include="Models\PatientError.cs" />
     <Compile Include="Models\Patients\Patient.cs" />
     <Compile Include="Models\Requests\Request.cs" />
     <Compile Include="PatientRewardsHubApi.cs" />
