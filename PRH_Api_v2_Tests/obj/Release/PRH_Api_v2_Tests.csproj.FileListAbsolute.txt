@@ -1,0 +1,9 @@
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Release\PRH_Api_v2_Tests.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Release\PRH_Api_v2_Tests.pdb
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Release\PatientRewardsHubApi_v2.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Release\Newtonsoft.Json.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Release\PatientRewardsHubApi_v2.pdb
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\bin\Release\Newtonsoft.Json.xml
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\obj\Release\PRH_Api_v2_Tests.csprojResolveAssemblyReference.cache
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\obj\Release\PRH_Api_v2_Tests.dll
+C:\PatientRewardsHubApi\PRH_Api_v2_Tests\obj\Release\PRH_Api_v2_Tests.pdb
