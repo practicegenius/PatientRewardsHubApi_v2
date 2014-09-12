@@ -52,7 +52,7 @@ namespace PatientRewardsHubApi_v2
         public T RunRequest<T>(string resource, string requestMethod, object body = null)
         {
             var response = RunRequest(resource, requestMethod, body);
-            if (response.HttpStatusCode != HttpStatusCode.OK)
+            if (!(response.HttpStatusCode == HttpStatusCode.OK || response.HttpStatusCode== HttpStatusCode.Created || response.HttpStatusCode == HttpStatusCode.NoContent))
             {
                 throw new ApplicationException("OK not received from server on method 'RunRequest'");
             }
@@ -87,7 +87,11 @@ namespace PatientRewardsHubApi_v2
                 //                      };
 
                // req.Headers["Authorization"] = GetPasswordOrTokenAuthHeader(); //mws:  
-                req.Headers["KEY"] = ApiToken;
+                if (!string.IsNullOrWhiteSpace(ApiToken))
+                {
+                    req.Headers["KEY"] = ApiToken;
+                }
+
                 req.Headers["API_VERSION"] = "2.0";
 
                 req.PreAuthenticate = true;
@@ -114,7 +118,7 @@ namespace PatientRewardsHubApi_v2
 
                     var dataStream = req.GetRequestStream();
                     dataStream.Write(formData, 0, formData.Length);
-                    dataStream.Close();
+                    dataStream.Close(); 
                 }
                 var res = req.GetResponse();
                 HttpWebResponse response = res as HttpWebResponse;

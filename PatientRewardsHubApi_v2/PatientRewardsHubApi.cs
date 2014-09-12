@@ -13,7 +13,8 @@ namespace PatientRewardsHubApi_v2
     {
         public Patients Patients { get; set; }
         public Appointments Appointments { get; set; }
-        
+        public Authentications Authentications { get; set; }
+
         public string PatientRewardsHubUrl { get; set; }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace PatientRewardsHubApi_v2
 
             Patients = new Patients(formattedUrl, apiToken);
             Appointments = new Appointments(formattedUrl, apiToken);
-
+            
 
             PatientRewardsHubUrl = formattedUrl;
         }
@@ -40,30 +41,37 @@ namespace PatientRewardsHubApi_v2
 
             Patients = new Patients(formattedUrl, user, password);
             Appointments = new Appointments(formattedUrl, user, password);
-
+            Authentications = new Authentications(formattedUrl, user, password);
 
             PatientRewardsHubUrl = formattedUrl;
         }
 
+        //public string GetApiKey()
+        //{
+
+        //}
+
         Uri GetFormattedPatientRewardsHubUrl(string yourPatientRewardsHubUrl)
         {                        
             yourPatientRewardsHubUrl = yourPatientRewardsHubUrl.ToLower();
-
-#if(!DEBUG) //mws:  turn off https for debugging
-            //Make sure the Authority is https://
-            if (yourPatientRewardsHubUrl.StartsWith("http://"))
-                yourPatientRewardsHubUrl = yourPatientRewardsHubUrl.Replace("http://", "https://");            
+            if (!yourPatientRewardsHubUrl.Contains("stage"))
+            {
+                //#if(!DEBUG) //mws:  turn off https for debugging
+                //Make sure the Authority is https://
+                if (yourPatientRewardsHubUrl.StartsWith("http://"))
+                    yourPatientRewardsHubUrl = yourPatientRewardsHubUrl.Replace("http://", "https://");            
 
             
-            if (!yourPatientRewardsHubUrl.StartsWith("https://"))
-                yourPatientRewardsHubUrl = "https://" + yourPatientRewardsHubUrl;
+                if (!yourPatientRewardsHubUrl.StartsWith("https://"))
+                    yourPatientRewardsHubUrl = "https://" + yourPatientRewardsHubUrl;
                         
-            if (!yourPatientRewardsHubUrl.EndsWith("/api/v2"))
-            {
-                //ensure that url ends with ".patientrewardshub.com/api/v2"
-                yourPatientRewardsHubUrl = yourPatientRewardsHubUrl.Split(new[] { ".patientrewardshub.com" }, StringSplitOptions.RemoveEmptyEntries)[0] + ".patientrewardshub.com/api/v2";               
+                //if (!yourPatientRewardsHubUrl.EndsWith("/api"))
+                //{
+                //    //ensure that url ends with ".patientrewardshub.com/api/v2"
+                //    yourPatientRewardsHubUrl = yourPatientRewardsHubUrl.Split(new[] { ".patientrewardshub.com" }, StringSplitOptions.RemoveEmptyEntries)[0] + ".patientrewardshub.com";               
+                //}
+                //#endif
             }
-#endif
             return new Uri(yourPatientRewardsHubUrl);
         }
 

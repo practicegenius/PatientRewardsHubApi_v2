@@ -28,6 +28,12 @@ namespace PatientRewardsHubApi_v2.Requests
             return groupPatientResponse;
         }
 
+        public GroupPatientResponse GetPatients(PatientSearch patientSearch)
+        {
+            GroupPatientResponse groupPatientResponse = GenericGet<GroupPatientResponse>(patientSearch.ToString());  
+            return groupPatientResponse;
+        }
+
         public IndividualPatientResponse GetPatientById(long patientId)
         {
             IndividualPatientResponse individualPatientResponse = new IndividualPatientResponse();           

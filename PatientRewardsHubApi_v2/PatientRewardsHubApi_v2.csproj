@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PatientRewardsHubApi_v2</RootNamespace>
     <AssemblyName>PatientRewardsHubApi_v2</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -50,6 +50,8 @@
     <Compile Include="GroupResponseBase.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Models\Appointments\Appointment.cs" />
+    <Compile Include="Models\AuthenticationResponse.cs" />
+    <Compile Include="Models\Authentications\Authentication.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\GroupAppointmentResponse.cs" />
     <Compile Include="Models\GroupPatientResponse.cs" />
@@ -62,7 +64,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestResult.cs" />
     <Compile Include="Requests\Appointments.cs" />
+    <Compile Include="Requests\Authentications.cs" />
     <Compile Include="Requests\Patients.cs" />
+    <Compile Include="Requests\PatientSearch.cs" />
     <Compile Include="Requests\Requests.cs" />
   </ItemGroup>
   <ItemGroup>
