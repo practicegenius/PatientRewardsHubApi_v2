@@ -13,7 +13,7 @@ namespace PRH_Api_v2_Tests
     public class Authentication_UnitTests
     {
         //private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.v200.branch.patientrewardshub.com/", "apikeyabapikeyab");
-        private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.stage.patientrewardshub.com", "amigo", "1234ab");
+        private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.stage.patientrewardshub.com", "amigo", "1234ab", "h7kFieazlUMZ9HL9QuMJpoNKbCMG27jj");
         private Random random = new Random();
 
         [TestMethod]

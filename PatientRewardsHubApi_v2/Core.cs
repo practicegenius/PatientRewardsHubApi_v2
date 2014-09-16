@@ -22,20 +22,18 @@ namespace PatientRewardsHubApi_v2
         /// <summary>
         /// Constructor that uses BasicHttpAuthentication.
         /// </summary>
-        /// <param name="patientRewardsHubApiUrl"></param>
-        /// <param name="user"></param>
-        /// <param name="password">LEAVE BLANK IF USING TOKEN</param>
-        /// <param name="apiToken">Optional Param which is used if specified instead of the password</param>
+        /// <param name="apiToken"></param>
         public Core(string patientRewardsHubApiUrl, string apiToken)
         {
             PatientRewardsHubUrl = patientRewardsHubApiUrl;
             ApiToken = apiToken;
         }
 
-        public Core(string patientRewardsHubApiUrl, string user, string password)
+        public Core(string patientRewardsHubApiUrl, string user, string password, string application_token)
         {
             User = user;
             Password = password;
+            ApplicationToken = application_token;
             PatientRewardsHubUrl = patientRewardsHubApiUrl;
         }
 
