@@ -32,10 +32,11 @@ namespace PatientRewardsHubApi_v2
             ApiToken = apiToken;
         }
 
-        public Core(string patientRewardsHubApiUrl, string user, string password)
+        public Core(string patientRewardsHubApiUrl, string user, string password, string application_token)
         {
             User = user;
             Password = password;
+            ApiToken = application_token;
             PatientRewardsHubUrl = patientRewardsHubApiUrl;
         }
 
