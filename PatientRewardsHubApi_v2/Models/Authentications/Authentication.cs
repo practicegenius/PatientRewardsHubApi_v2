@@ -19,5 +19,8 @@ namespace PatientRewardsHubApi_v2.Models.Authentications
 
         [JsonProperty("password")]
         public string Password { get; set; }
+
+        [JsonProperty("application_token")]
+        public string ApiToken { get; set; }
     }
 }
