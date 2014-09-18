@@ -17,10 +17,10 @@ namespace PatientRewardsHubApi_v2.Requests
         {
         }
 
-        public Patients(string yourPatientRewardsHubUrl, string user, string password)
-            : base(yourPatientRewardsHubUrl, user, password)
-        {
-        }
+        //public Patients(string yourPatientRewardsHubUrl, string user, string password)
+        //    : base(yourPatientRewardsHubUrl, user, password)
+        //{
+        //}
 #if SYNC
         public GroupPatientResponse GetPatients(int limit, int offset)
         {
