@@ -30,18 +30,15 @@ namespace PatientRewardsHubApi_v2
 
             Patients = new Patients(formattedUrl, apiToken);
             Appointments = new Appointments(formattedUrl, apiToken);
-            
 
             PatientRewardsHubUrl = formattedUrl;
         }
 
-        public PatientRewardsHubApi(string yourPatientRewardsHubUrl, string user, string password = "")
+        public PatientRewardsHubApi(string yourPatientRewardsHubUrl)
         {
             var formattedUrl = GetFormattedPatientRewardsHubUrl(yourPatientRewardsHubUrl).AbsoluteUri;
 
-            Patients = new Patients(formattedUrl, user, password);
-            Appointments = new Appointments(formattedUrl, user, password);
-            Authentications = new Authentications(formattedUrl, user, password);
+            Authentications = new Authentications(formattedUrl);
 
             PatientRewardsHubUrl = formattedUrl;
         }
