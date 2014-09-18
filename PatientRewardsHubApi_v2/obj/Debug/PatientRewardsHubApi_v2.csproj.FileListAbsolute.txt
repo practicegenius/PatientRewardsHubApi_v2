@@ -16,3 +16,4 @@ C:\PatientRewardsHubApi\PatientRewardsHubApi_v2\bin\Debug\Newtonsoft.Json.dll
 C:\PatientRewardsHubApi\PatientRewardsHubApi_v2\bin\Debug\Newtonsoft.Json.xml
 C:\PatientRewardsHubApi\PatientRewardsHubApi_v2\obj\Debug\PatientRewardsHubApi_v2.dll
 C:\PatientRewardsHubApi\PatientRewardsHubApi_v2\obj\Debug\PatientRewardsHubApi_v2.pdb
+C:\PatientRewardsHubApi\PatientRewardsHubApi_v2\obj\Debug\PatientRewardsHubApi_v2.csprojResolveAssemblyReference.cache

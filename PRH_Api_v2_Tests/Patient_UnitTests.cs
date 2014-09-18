@@ -113,7 +113,7 @@ namespace PRH_Api_v2_Tests
         {
             var res = api.Patients.CreatePatient(new Patient()
             {
-                External_id = "15" + random.Next(0,10000).ToString(),
+                External_id = "5" + random.Next(0,10000).ToString(),
                 Firstname = "Gary",
                 Lastname = "Williams",
                 Email = "garywilliams@garywilliamspatientRewardsHub.com",
@@ -242,7 +242,7 @@ namespace PRH_Api_v2_Tests
         [TestMethod]
         public void Test_Deletepatient_2()
         {
-            var res = api.Patients.GetPatientById(2327085);
+            var res = api.Patients.GetPatientById(2327109);
             int id = res.Patient.Id;
             var isDelete = api.Patients.DeletePatient(id);
 
@@ -375,7 +375,7 @@ namespace PRH_Api_v2_Tests
 
             patients.Add(new Patient()
             {
-                External_id = "111" + random.Next(0, 10000).ToString(),
+                External_id = "11M" + random.Next(0, 10000).ToString(),
                 Firstname = "Test",
                 Lastname = "Patient",
                 Email = "batch011@patientRewardsHub.com",
@@ -388,7 +388,7 @@ namespace PRH_Api_v2_Tests
             });
             patients.Add(new Patient()
             {
-                External_id = "012" + random.Next(0, 10000).ToString(),
+                External_id = "12M" + random.Next(0, 10000).ToString(),
                 Firstname = "Batchni",
                 Lastname = "Patientni",
                 Email = "batchni@patientRewardsHub.com",
@@ -401,7 +401,7 @@ namespace PRH_Api_v2_Tests
             });
             patients.Add(new Patient()
             {
-                External_id = "013" + random.Next(0, 10000).ToString(),
+                External_id = "13M" + random.Next(0, 10000).ToString(),
                 Firstname = "Batchsan",
                 Lastname = "Patientsan",
                 Email = "batchsan@patientRewardsHub.com",

@@ -13,13 +13,15 @@ namespace PRH_Api_v2_Tests
     public class Authentication_UnitTests
     {
         //private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.v200.branch.patientrewardshub.com/", "apikeyabapikeyab");
-        private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.stage.patientrewardshub.com", "amigo", "1234ab");
+       
         private Random random = new Random();
 
+
         [TestMethod]
-        public void Test_GetAuthentication()
+        public void Test_Authentication_GetAccessToken()
         {
-            var res = api.Authentications.CreateAuthentication();
+            PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.stage.patientrewardshub.com");
+            var res = api.Authentications.CreateAuthentication("amigo", "1234ab");
 
             Assert.IsTrue(res.AccessToken == "F4FMlXEAuVEx1Hby");
         }
