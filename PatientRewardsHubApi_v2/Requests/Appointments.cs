@@ -14,12 +14,11 @@ namespace PatientRewardsHubApi_v2.Requests
         {
         }
 
-        public Appointments(string yourPatientRewardsHubUrl, string user, string password)
-            : base(yourPatientRewardsHubUrl, user, password)
-        {
-        }
+        //public Appointments(string yourPatientRewardsHubUrl, string user, string password)
+        //    : base(yourPatientRewardsHubUrl, user, password)
+        //{
+        //}
 #if SYNC
-        //// already here... did i create this??
         //public GroupAppointmentResponse GetAppointments()
         //{
         //    GroupAppointmentResponse groupAppointmentResponse = new GroupAppointmentResponse();
