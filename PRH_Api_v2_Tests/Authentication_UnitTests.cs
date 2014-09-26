@@ -19,7 +19,7 @@ namespace PRH_Api_v2_Tests
         {
 
             PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.patientrewardshub.com");
-            var res = api.Authentications.CreateAuthentication("", "", ""); // username, password, applicationToken
+            var res = api.Authentications.CreateAuthentication("", "", ""); // username, password, application 
 
             Assert.IsTrue(res.AccessToken == "");  //AccessToken is the old APIKey
         }
@@ -28,7 +28,7 @@ namespace PRH_Api_v2_Tests
         public void Test_Authentication_GetAccessToken_Constructor()
         {
 
-            var authentications = new PatientRewardsHubApi_v2.Requests.Authentications("https://api.patientrewardshub.com", "hubsync", "1234ab", "carestream;carestream;carestream");
+            var authentications = new PatientRewardsHubApi_v2.Requests.Authentications("https://api.patientrewardshub.com", "", "", "");
             var res = authentications.CreateAuthentication();
 
             Assert.IsTrue(res.AccessToken == "n9UfoneWE3qA2GHA");  //AccessToken is the old APIKey
