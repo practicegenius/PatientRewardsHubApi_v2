@@ -23,13 +23,13 @@ namespace PatientRewardsHubApi_v2
         /// <param name="yourPatientRewardsHubUrl">Will be formated to "https://yoursite.patientrewardshub.com/api/v2"</param>
         /// <param name="user"></param>
         /// <param name="password">LEAVE BLANK IF USING TOKEN</param>
-        /// <param name="apiToken">Optional Param which is used if specified instead of the password</param>
-        public PatientRewardsHubApi(string yourPatientRewardsHubUrl, string apiToken = "")
+        /// <param name="access_token">Optional Param which is used if specified instead of the password</param>
+        public PatientRewardsHubApi(string yourPatientRewardsHubUrl, string access_token = "")
         {
             var formattedUrl = GetFormattedPatientRewardsHubUrl(yourPatientRewardsHubUrl).AbsoluteUri;
 
-            Patients = new Patients(formattedUrl, apiToken);
-            Appointments = new Appointments(formattedUrl, apiToken);
+            Patients = new Patients(formattedUrl, access_token);
+            Appointments = new Appointments(formattedUrl, access_token);
 
             PatientRewardsHubUrl = formattedUrl;
         }
@@ -43,10 +43,6 @@ namespace PatientRewardsHubApi_v2
             PatientRewardsHubUrl = formattedUrl;
         }
 
-        //public string GetApiKey()
-        //{
-
-        //}
 
         Uri GetFormattedPatientRewardsHubUrl(string yourPatientRewardsHubUrl)
         {                        

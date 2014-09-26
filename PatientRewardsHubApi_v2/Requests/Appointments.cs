@@ -9,8 +9,8 @@ namespace PatientRewardsHubApi_v2.Requests
 {
     public class Appointments : Core
     {
-        public Appointments(string yourPatientRewardsHubUrl, string apiToken)
-            : base(yourPatientRewardsHubUrl, apiToken)
+        public Appointments(string yourPatientRewardsHubUrl, string access_token)
+            : base(yourPatientRewardsHubUrl, access_token)
         {
         }
 

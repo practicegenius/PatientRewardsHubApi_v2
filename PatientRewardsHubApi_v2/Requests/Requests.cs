@@ -8,8 +8,8 @@ namespace PatientRewardsHubApi_v2.Requests
 {
     public class Requests : Core
     {
-        public Requests(string yourPatientRewardsHubUrl, string user, string password, string apiToken)
-            : base(yourPatientRewardsHubUrl, apiToken)
+        public Requests(string yourPatientRewardsHubUrl, string user, string password, string access_token)
+            : base(yourPatientRewardsHubUrl, access_token)
         {
         }
 

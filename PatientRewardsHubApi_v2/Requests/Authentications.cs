@@ -12,10 +12,10 @@ namespace PatientRewardsHubApi_v2.Requests
 {
     public class Authentications: Core 
     {
-        //public Authentications(string yourPatientRewardsHubUrl, string apiToken)
-        //    : base(yourPatientRewardsHubUrl, apiToken)
-        //{
-        //}
+        public Authentications(string yourPatientRewardsHubUrl, string user, string password, string application_token)
+            : base(yourPatientRewardsHubUrl, user, password, application_token)
+        {
+        }
 
         public Authentications(string yourPatientRewardsHubUrl)
             : base(yourPatientRewardsHubUrl, "")
@@ -32,22 +32,29 @@ namespace PatientRewardsHubApi_v2.Requests
         //    return authenticationResponse;
         //}
 
-        public Authentication CreateAuthentication(string userName, string password)
+        public Authentication CreateAuthentication(string userName, string password, string applicationToken)
         {
             this.User = userName;
             this.Password = password;
-            var body = new Authentication { Username = this.User, Password = this.Password, ApiToken = this.ApiToken };
+            this.ApplicationToken = applicationToken;
+            
+
+            var body = new Authentication { Username = this.User, Password = this.Password, ApplicationToken=this.ApplicationToken };
+
             //AuthenticationResponse authenticationResponse = new AuthenticationResponse();
             Authentication retAuthentication = GenericPost<Authentication>("authentication", body);
 
             return retAuthentication;
         }
-        //public Authentication CreateAuthentication(string userName, string password)
-        //{
-        //    this.User = userName;
-        //    this.Password = password;
-        //    return CreateAuthentication();
-        //}
+        public Authentication CreateAuthentication()
+        {
+            var body = new Authentication { Username = this.User, Password = this.Password, ApplicationToken = this.ApplicationToken };
+
+            //AuthenticationResponse authenticationResponse = new AuthenticationResponse();
+            Authentication retAuthentication = GenericPost<Authentication>("authentication", body);
+
+            return retAuthentication;
+        }
 #endif
     }
 }

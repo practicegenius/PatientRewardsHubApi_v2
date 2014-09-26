@@ -8,10 +8,12 @@ namespace PRH_Api_v2_Tests
     [TestClass]
     public class Appointment_UnitTests
     {
-        //private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.v200.branch.patientrewardshub.com/", "apikeyabapikeyab");
-        private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.stage.patientrewardshub.com", "F4FMlXEAuVEx1Hby"); //"apikeyabapikeyab"
-        private Random random = new Random();
+        private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.patientrewardshub.com/", "n9UfoneWE3qA2GHA");
 
+        //This is for the stage server.
+        //private PatientRewardsHubApi api = new PatientRewardsHubApi("http://api.stage.patientrewardshub.com", "F4FMlXEAuVEx1Hby"); //"apikeyabapikeyab"
+        
+        private Random random = new Random();
 
         [TestMethod]
         public void Test_GetAppointment()
@@ -23,49 +25,40 @@ namespace PRH_Api_v2_Tests
         [TestMethod]
         public void Test_GetAppointmentByExternalId()
         {
-            var res = api.Appointments.GetAppointmentByExternalId("b0957697-bd6b-4cc2-9d4a-607ddd1ccbbf");
-            if(res.Count > 0)
-                api.Appointments.DeleteAppointment(res.Appointments[0].Id);
+            var res = api.Appointments.GetAppointmentByExternalId("115B5878");
+            //if(res.Count > 0)
+            //    api.Appointments.DeleteAppointment(res.Appointments[0].Id);
 
             if(res.Count > 0)
-                Assert.IsTrue(res.Appointments[0].External_id.Contains("b0957697-bd6b-4cc2-9d4a-607ddd1ccbbf"));
+                Assert.IsTrue(res.Appointments[0].Description.Contains("Wire"));
         }
-
-        //[TestMethod]
-        //public void Test_GetAppointmentByExternalId42B2720() 
-        //{
-        //    var res = api.Appointments.GetAppointmentByExternalId("11A7059");
-        //    Assert.IsTrue(res.Appointments[0].Description.Contains("45 mins"));
-        //    Assert.IsTrue(res.Appointments.Count==1);
-
-        //}
 
         [TestMethod]
         public void Test_Create_Appointment()
         {
             var res = api.Appointments.CreateAppointment(new Appointment()
                                                                                     {
-                                                                                        External_id="42B" + random.Next(0,10000).ToString(),
-                                                                                        Description = "Consultation for 30 mins",
-                                                                                        Patient_id = "2326719",
-                                                                                        StartTime = DateTime.Parse("09/22/2014 2:00 pm")
+                                                                                        External_id="115B" + random.Next(0,10000).ToString(),
+                                                                                        Description = "New patient",
+                                                                                        Patient_id = "67219",
+                                                                                        StartTime = DateTime.Parse("11/11/2014 12:00 pm")
                                                                                            
                                                                                     });
             Assert.IsTrue(res.Appointment.Id > 0);
-            Assert.IsTrue(res.Appointment.Description.Contains("mins"));
+            Assert.IsTrue(res.Appointment.Description.Contains("New"));
         }
 
         [TestMethod]
         public void Test_Update_Appointment()
         {
-            var res = api.Appointments.GetAppointmentByExternalId("42B2720");
+            var res = api.Appointments.GetAppointmentByExternalId("115B5878");
             if (res.Appointments.Count > 0) 
             {
-                //res.Appointments[0].External_id = "31A5167";
-                //res.Appointments[0].Patient_id = "2326719";
-                //res.Appointments[0].StartTime = DateTime.Parse("09/22/2014 2:20 pm");
-                res.Appointments[0].Description = "Consultation for 45 mins";
+                res.Appointments[0].Description = "Wire Change for 45 mins";
                 var resOne = api.Appointments.UpdateAppointment(res.Appointments[0]);
+                var resChanged = api.Appointments.GetAppointmentByExternalId(resOne.Appointment.External_id);
+
+                Assert.IsTrue(resOne.Appointment.Description.Contains("for 45 mins"));
             }
             else
             {
@@ -80,7 +73,7 @@ namespace PRH_Api_v2_Tests
             {
                  Description = "Create Appointment by u=",
                  Patient_id = "2326755",
-                 StartTime =DateTime.Parse("09/25/2014 3:00 pm")
+                 StartTime =DateTime.Parse("10/25/2014 3:00 pm")
             });
 
             int id = res.Appointment.Id;

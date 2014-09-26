@@ -12,15 +12,11 @@ namespace PatientRewardsHubApi_v2.Requests
 {
     public class Patients : Core
     {
-        public Patients(string yourPatientRewardsHubUrl, string apiToken)
-            : base(yourPatientRewardsHubUrl, apiToken)
+        public Patients(string yourPatientRewardsHubUrl, string access_token)
+            : base(yourPatientRewardsHubUrl, access_token)
         {
         }
 
-        //public Patients(string yourPatientRewardsHubUrl, string user, string password)
-        //    : base(yourPatientRewardsHubUrl, user, password)
-        //{
-        //}
 #if SYNC
         public GroupPatientResponse GetPatients(int limit, int offset)
         {

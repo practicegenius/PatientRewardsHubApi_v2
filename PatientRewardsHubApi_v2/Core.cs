@@ -17,7 +17,11 @@ namespace PatientRewardsHubApi_v2
         protected string User;
         protected string Password;
         protected string PatientRewardsHubUrl;
-        protected string ApiToken;
+        protected string AccessToken; //This is APIKey
+
+        //This is a new token, that will be given to an integrator by JT or the PRH Dev Team
+        //It tells us which application is requesting an "AccessToken" when they authenticate
+        protected string ApplicationToken; 
 
         /// <summary>
         /// Constructor that uses BasicHttpAuthentication.
@@ -25,18 +29,18 @@ namespace PatientRewardsHubApi_v2
         /// <param name="patientRewardsHubApiUrl"></param>
         /// <param name="user"></param>
         /// <param name="password">LEAVE BLANK IF USING TOKEN</param>
-        /// <param name="apiToken">Optional Param which is used if specified instead of the password</param>
-        public Core(string patientRewardsHubApiUrl, string apiToken)
+        /// <param name="access_token">Optional Param which is used if specified instead of the password</param>
+        public Core(string patientRewardsHubApiUrl, string access_token)
         {
             PatientRewardsHubUrl = patientRewardsHubApiUrl;
-            ApiToken = apiToken;
+            AccessToken = access_token; //This is the standard API Key
         }
 
         public Core(string patientRewardsHubApiUrl, string user, string password, string application_token)
         {
             User = user;
             Password = password;
-            ApiToken = application_token;
+            ApplicationToken = application_token;
             PatientRewardsHubUrl = patientRewardsHubApiUrl;
         }
 
@@ -88,9 +92,9 @@ namespace PatientRewardsHubApi_v2
                 //                      };
 
                // req.Headers["Authorization"] = GetPasswordOrTokenAuthHeader(); //mws:  
-                if (!string.IsNullOrWhiteSpace(ApiToken))
+                if (!string.IsNullOrWhiteSpace(AccessToken))
                 {
-                    req.Headers["KEY"] = ApiToken;
+                    req.Headers["KEY"] = AccessToken;
                 }
 
                 req.Headers["API_VERSION"] = "2.0";
@@ -177,19 +181,19 @@ namespace PatientRewardsHubApi_v2
             return res.HttpStatusCode == HttpStatusCode.OK;
         }
 #endif
-        protected string GetPasswordOrTokenAuthHeader()
-        { 
-            if (!String.IsNullOrEmpty(ApiToken) && ApiToken.Trim().Length >= 0)
-                return GetAuthHeader(User + "/token", ApiToken);
+        //protected string GetPasswordOrTokenAuthHeader()
+        //{ 
+        //    if (!String.IsNullOrEmpty(AccessToken) && AccessToken.Trim().Length >= 0)
+        //        return GetAuthHeader(User + "/token", AccessToken);
             
-            return GetAuthHeader(User, Password);
-        }
+        //    return GetAuthHeader(User, Password);
+        //}
 
-        protected string GetAuthHeader(string userName, string password)
-        {
-            string auth = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", userName, password)));
-            return string.Format("Basic {0}", auth);
-        }
+        //protected string GetAuthHeader(string userName, string password)
+        //{
+        //    string auth = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", userName, password)));
+        //    return string.Format("Basic {0}", auth);
+        //}
 
 #if ASYNC
         public async Task<T> GetByPageUrlAsync<T>(string pageUrl)

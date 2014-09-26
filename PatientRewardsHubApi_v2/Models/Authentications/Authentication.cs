@@ -11,8 +11,9 @@ namespace PatientRewardsHubApi_v2.Models.Authentications
 
     public class Authentication
     {
-        [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
+
+        [JsonProperty("application_token")] 
+        public string ApplicationToken { get; set; }
 
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -20,7 +21,11 @@ namespace PatientRewardsHubApi_v2.Models.Authentications
         [JsonProperty("password")]
         public string Password { get; set; }
 
-        [JsonProperty("application_token")]
-        public string ApiToken { get; set; }
+        /// <summary>
+        /// This is the standard API Key
+        /// </summary>
+        [JsonProperty("access_token")] 
+        public string AccessToken { get; set; } //This is APIKey
+
     }
 }
